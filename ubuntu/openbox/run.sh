@@ -1,1 +1,12 @@
-docker run --rm -it --security-opt seccomp=unconfined -e RESOLUTION=1360x768 -p 5900:5900 klab_ubuntu_openbox_dev
+#!/bin/bash
+
+set -v
+docker run \
+  -it \
+  -h docker \
+  -p 5901:5900 \
+  -v $HOME/Public:/data \
+  -e RESOLUTION=1440x810 \
+  --name klab_ubuntu_openbox \
+  --security-opt seccomp=unconfined \
+  --net=host klab_ubuntu_openbox

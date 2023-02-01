@@ -1,8 +1,6 @@
-#docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix klab/nautilus
-
 #!/bin/bash
   
-HOST_PATH=$HOME/__docker/natilus-simple
+HOST_PATH=$HOME/.local/docker/nautilus-simple
 
 mkdir -p $HOST_PATH # Create volume to preserve firefox container data
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST_PATH=$HOME/__docker/firefox-simple
+HOST_PATH=$HOME/.local/docker/firefox-simple
 
 mkdir -p $HOST_PATH # Create volume to preserve firefox container data
 
