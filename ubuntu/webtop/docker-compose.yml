@@ -1,0 +1,25 @@
+---
+version: "2.1"
+services:
+  ubuntu:
+    image: linuxserver/ubuntu-xfce:latest
+    hostname: docker
+    container_name: ubuntu-xfce
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      #- SUBFOLDER=/ #optional
+      #- KEYBOARD=en-us-qwerty #optional
+      - TITLE=Ubuntu #optional
+    volumes:
+      - /home/shanmugk/.local/docker/ubuntu-webtop:/config
+      - /var/run/docker.sock:/var/run/docker.sock #optional
+    ports:
+      - 3030:3000
+    #devices:
+    #  - /dev/dri:/dev/dri #optional
+    shm_size: "2gb" #optional
+    restart: unless-stopped
