@@ -1,4 +1,4 @@
-FROM klab_ubuntu_xfce_base:latest
+FROM ubuntu-xfce-base:latest
 
 ENV USER root
 WORKDIR /root
