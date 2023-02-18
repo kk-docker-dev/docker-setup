@@ -8,6 +8,9 @@ print_welcome_banner() {
 	#                                                            #
 	# Welcome to Klab's Doxygen documentation server console     #
 	#                                                            #
+	# Add your projects to the shared folder to avail at /data   #
+	# directory                                                  #
+	#                                                            #
 	# Run 'mkdox' command in the project root path to generate   #
 	# the Doxygen project documentation                          #
 	#                                                            #
