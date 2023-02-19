@@ -7,6 +7,6 @@ mkdir -p $HOST_PATH # Create volume to preserve firefox container data
 docker run \
 	--rm \
 	-e DISPLAY \
-	--name firefox_simple \
+	--name firefox-simple \
 	-v $HOST_PATH:/home/shanmugk \
-	--net=host klab_firefox_simple
+	--net=host klab-firefox-simple

@@ -1,1 +1,1 @@
-docker build -t klab_firefox_simple .
+docker build -t klab-firefox-simple .
