@@ -1,1 +1,1 @@
-docker build --rm -t klab_ubuntu_xfce .
+docker build --rm -t klab-ubuntu-xfce .

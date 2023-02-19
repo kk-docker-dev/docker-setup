@@ -10,7 +10,7 @@ echo "root:$SSHPW" | chpasswd
 echo "ssh login password: $SSHPW"
 
 if [ -n "$RESOLUTION" ]; then
-    sed -i "s/1024x768/$RESOLUTION/" /root/supervisord.conf
+    sed -i "s/1440x900/$RESOLUTION/" /root/supervisord.conf
 fi
 
 # start up supervisord, all daemons should launched by supervisord.
