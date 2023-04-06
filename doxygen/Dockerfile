@@ -1,33 +1,29 @@
-# Docker file to build Doxygen server
+# Docker file to build Doxygen builder
 
 # Base image
-FROM ubuntu:focal
+FROM klab/ubuntu:latest
 
-# LABEL about the docker image
-LABEL maintainer="kribakarans@gmail.com"
-LABEL version="1.0-0"
-LABEL description="Doxygen documentaion server"
+# About this docker image
+LABEL MAINTAINER="Kirubakaran Shanmugam <kribakarans@gmail.com>"
+LABEL DESCRIPTION="Klab Doxygen documentaion builder"
 
-# Disable prompt during packages installation
-ARG DEBIAN_FRONTEND=noninteractive
+# Install required packages
+RUN apt-get update && \
+    apt-get upgrade -y --no-install-recommends && \
+    apt-get install -y --no-install-recommends apache2 doxygen git graphviz php
 
-# Install dependecies
-RUN apt-get update
-RUN apt-get install --no-install-recommends -y apache2 doxygen git graphviz php
-RUN rm -rf /var/lib/apt/lists/*
-RUN apt-get clean
+# Clean repositories
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy source
+WORKDIR /host
+COPY src /klab
 
 # Setup workspace
-WORKDIR /data
-COPY ./scripts /root/scripts
-COPY ./scripts/mkdox.sh /usr/local/bin/mkdox
-COPY ./scripts/index.php /var/www/html/index.php
+RUN  rm -f /var/www/html/index.html && \
+     /klab/write_banner.sh >> /root/.bashrc && \
+     cp -f /klab/index.php /var/www/html/index.php && \
+     install -D /klab/mkdox.sh /usr/local/bin/mkdox
 
-RUN rm -f /var/www/html/index.html
-RUN /root/scripts/write_banner.sh >> /root/.bashrc
-
-# Run Apache web server
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
-# Expose the default HTTP port
-EXPOSE 80
+CMD [ "/klab/init.sh" ]

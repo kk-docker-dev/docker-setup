@@ -1,1 +1,1 @@
-docker run --mount type=bind,source=$HOME/Public,target=/data --detach --name doxygen -h doxygen-server -p 9596:80 klab/doxygen
+docker run --detach --name klab-doxygen -h klab-doxygen -p 9596:80 -v $HOME/Public:/host klab/doxygen
